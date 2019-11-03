@@ -1,4 +1,4 @@
-def gen_dyke_paths(n, path=[1]):
+def gen_dyck_paths(n, path=[1]):
 	# end paths that go under the x-axis
 	if sum(path) < 0:
 		return
@@ -11,17 +11,17 @@ def gen_dyke_paths(n, path=[1]):
 		return
 	# add upstep and backtrack
 	path.append(1)
-	gen_dyke_paths(n, path)
+	gen_dyck_paths(n, path)
 	path.pop()
 	# add downstep and backtrack
 	path.append(-1)
-	gen_dyke_paths(n, path)
+	gen_dyck_paths(n, path)
 	path.pop()
 
 if __name__ == "__main__":
 	import argparse
 	
-	parser = argparse.ArgumentParser(description="This is a program to visualize dyke n-paths")
+	parser = argparse.ArgumentParser(description="This is a program to visualize dyck n-paths")
 	parser.add_argument(
 		"-n", 
 		"--number"
@@ -31,7 +31,7 @@ if __name__ == "__main__":
 	if args.number:
 		n = int(args.number)
 		print("USING N = %d" % n)
-		gen_dyke_paths(n)
+		gen_dyck_paths(n)
 	else:
 		print("USING DEFAULT N = 3")
-		gen_dyke_paths(3)
+		gen_dyck_paths(3)

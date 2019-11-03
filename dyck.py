@@ -1,22 +1,31 @@
+from copy import deepcopy
+
 def gen_dyck_paths(n, path=[1]):
-	# end paths that go under the x-axis
-	if sum(path) < 0:
-		return
-	# terminating condition
-	if len(path) == 2*n:
-		if sum(path) == 0:
-			print(path)
-		else:
-			pass
-		return
-	# add upstep and backtrack
-	path.append(1)
-	gen_dyck_paths(n, path)
-	path.pop()
-	# add downstep and backtrack
-	path.append(-1)
-	gen_dyck_paths(n, path)
-	path.pop()
+	paths = []
+
+	def func(_path):
+		# end _paths that go under the x-axis
+		if sum(_path) < 0:
+			return
+		# terminating condition
+		if len(_path) == 2*n:
+			if sum(_path) == 0:
+				paths.append(deepcopy(_path))
+			else:
+				pass
+			return
+		# add upstep and backtrack
+		_path.append(1)
+		func(_path)
+		_path.pop()
+		# add downstep and backtrack
+		_path.append(-1)
+		func(_path)
+		_path.pop()
+	
+	func(path)
+
+	return paths
 
 if __name__ == "__main__":
 	import argparse
@@ -31,7 +40,7 @@ if __name__ == "__main__":
 	if args.number:
 		n = int(args.number)
 		print("USING N = %d" % n)
-		gen_dyck_paths(n)
+		print(gen_dyck_paths(n))
 	else:
 		print("USING DEFAULT N = 3")
-		gen_dyck_paths(3)
+		print(gen_dyck_paths(3))

@@ -3,6 +3,9 @@ from copy import deepcopy
 def gen_dyck_paths(n, path=[1]):
 	paths = []
 
+	if n <= 0:
+		return paths		
+
 	def func(_path):
 		# end _paths that go under the x-axis
 		if sum(_path) < 0:

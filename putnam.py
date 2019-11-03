@@ -19,6 +19,9 @@ def gen_input_paths(n, path=[]):
 			valid_paths.append(path)
 	return valid_paths
 
+def gen_output_paths(n, path=[]):
+	return gen_dyck_paths(n-1)
+
 if __name__ == "__main__":
 	import argparse
 	

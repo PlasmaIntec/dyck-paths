@@ -4,7 +4,13 @@
 
 ## Usage
 For default input
-- `python Dyck.py`
+- `python dyck.py`
 
 For custom input
-- `python Dyck.py -n 5`
+- `python dyck.py -n 5`
+
+For meeting a lovely Dyck Path
+- `python plot.py`
+
+For meeting your dream Dyck Path
+- `python plot.py -n 5`
